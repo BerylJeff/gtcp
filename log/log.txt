@@ -1,0 +1,9 @@
+2022/03/04 17:43:34.695658 main.go:58: S5Server OnReceive cid:1 msgId:101 msglen:9 msg:client_:1
+2022/03/04 17:43:34.718714 main.go:58: S5Server OnReceive cid:1 msgId:102 msglen:9 msg:client_:2
+2022/03/04 17:43:34.718714 main.go:28: S5Client OnReceive  msgId:201 msglen:9 msg:client_:1
+2022/03/04 17:43:34.719234 main.go:58: S5Server OnReceive cid:1 msgId:103 msglen:9 msg:client_:3
+2022/03/04 17:43:34.719234 main.go:28: S5Client OnReceive  msgId:202 msglen:9 msg:client_:2
+2022/03/04 17:43:34.719841 main.go:58: S5Server OnReceive cid:1 msgId:104 msglen:9 msg:client_:4
+2022/03/04 17:43:34.719841 main.go:28: S5Client OnReceive  msgId:203 msglen:9 msg:client_:3
+2022/03/04 17:43:34.720603 main.go:28: S5Client OnReceive  msgId:204 msglen:9 msg:client_:4
+osed by the remote host. len:0 
