@@ -1,10 +1,10 @@
 package main
 
 import (
-	"commonTcpServer/client"
-	"commonTcpServer/header"
-	_ "commonTcpServer/logger"
-	"commonTcpServer/server"
+	"gtcp/client"
+	"gtcp/header"
+	_ "gtcp/logger"
+	"gtcp/server"
 	"fmt"
 	"log"
 )

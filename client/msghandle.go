@@ -1,7 +1,7 @@
 package client
 
 import (
-	"commonTcpServer/header"
+	"gtcp/header"
 	"log"
 )
 

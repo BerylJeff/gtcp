@@ -1,7 +1,7 @@
 package server
 
 import (
-	"commonTcpServer/header"
+	"gtcp/header"
 	"fmt"
 	"log"
 	"net"
