@@ -1,11 +1,14 @@
 package main
 
 import (
+	"fmt"
+	"github.com/golang/protobuf/proto"
 	"gtcp/client"
 	"gtcp/header"
+	"gtcp/helloword"
 	_ "gtcp/logger"
+	"gtcp/login"
 	"gtcp/server"
-	"fmt"
 	"log"
 )
 
@@ -55,8 +58,16 @@ type S5Server struct {
 }
 
 func (s *S5Server) OnReceive(cid uint64, header header.IHeader, body []byte) error {
-	log.Printf("S5Server OnReceive cid:%d msgId:%d msglen:%d msg:%s", cid, header.GetMsgID(), header.GetMsgLen(), string(body))
-	s.SendMsg(cid, header.GetMsgID() + 100, body)
+
+	req := &helloword.HelloRequest{}
+	// 对数据进行序列化
+	err := proto.Unmarshal(body, req)
+	if err != nil {
+		log.Fatalln("Mashal data error:", err)
+	}
+
+	log.Printf("S5Server OnReceive cid:%d msgId:%d msglen:%d msg:%v", cid, header.GetMsgID(), header.GetMsgLen(), req)
+	//s.SendMsg(cid, header.GetMsgID() + 100, body)
 	return nil
 }
 
@@ -94,8 +105,18 @@ func main() {
 		return
 	}
 
+	go login.LoginStart()
+
 	for i := 1; i < 5; i++ {
-		data := []byte(fmt.Sprintf("client_:%d", i))
+
+		req := &helloword.HelloRequest{Name: fmt.Sprintf("client_:%d", i)}
+		// 对数据进行序列化
+		data, err := proto.Marshal(req)
+		if err != nil {
+			log.Fatalln("Mashal data error:", err)
+		}
+
+
 		head := &header.HeadInfo{
 			MsgLen: int32(len(data)),
 			MsgID:  uint16(i + 100),
