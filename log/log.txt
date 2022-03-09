@@ -1,10 +1,11 @@
-2022/03/05 15:05:15.341013 main.go:58: S5Server OnReceive cid:1 msgId:101 msglen:9 msg:client_:1
-2022/03/05 15:05:15.394305 main.go:58: S5Server OnReceive cid:1 msgId:102 msglen:9 msg:client_:2
-2022/03/05 15:05:15.394305 main.go:28: S5Client OnReceive  msgId:201 msglen:9 msg:client_:1
-2022/03/05 15:05:15.394305 main.go:28: S5Client OnReceive  msgId:202 msglen:9 msg:client_:2
-2022/03/05 15:05:15.394305 main.go:58: S5Server OnReceive cid:1 msgId:103 msglen:9 msg:client_:3
-2022/03/05 15:05:15.394838 main.go:28: S5Client OnReceive  msgId:203 msglen:9 msg:client_:3
-2022/03/05 15:05:15.394838 main.go:58: S5Server OnReceive cid:1 msgId:104 msglen:9 msg:client_:4
-2022/03/05 15:05:15.394838 main.go:28: S5Client OnReceive  msgId:204 msglen:9 msg:client_:4
-ent_:4
-osed by the remote host. len:0 
+2022/03/08 16:32:10.893172 main.go:68: S5Server OnReceive cid:1 msgId:101 msglen:11 msg:name:"client_:1"
+2022/03/08 16:32:10.910729 main.go:68: S5Server OnReceive cid:1 msgId:102 msglen:11 msg:name:"client_:2"
+2022/03/08 16:32:10.911227 main.go:68: S5Server OnReceive cid:1 msgId:103 msglen:11 msg:name:"client_:3"
+2022/03/08 16:32:10.911227 main.go:68: S5Server OnReceive cid:1 msgId:104 msglen:11 msg:name:"client_:4"
+161843 main.go:68: S5Server OnReceive cid:1 msgId:103 msglen:11 msg:name:"client_:3"
+2022/03/08 16:30:51.161873 main.go:68: S5Server OnReceive cid:1 msgId:104 msglen:11 msg:name:"client_:4"
+2022/03/08 16:30:51.161873 main.go:30: S5Client OnReceive  msgId:203 msglen:11 msg:
+	client_:3
+2022/03/08 16:30:51.162399 main.go:30: S5Client OnReceive  msgId:204 msglen:11 msg:
+	client_:4
+:0 
