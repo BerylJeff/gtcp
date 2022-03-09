@@ -1,7 +1,7 @@
 package server
 
 import (
-	"commonTcpServer/header"
+	"github.com/Jaswit/gtcp/header"
 	"log"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"gtcp/header"
+	"github.com/Jaswit/gtcp/header"
 	"fmt"
 	"log"
 	"net"

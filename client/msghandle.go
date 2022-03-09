@@ -1,7 +1,7 @@
 package client
 
 import (
-	"gtcp/header"
+	"github.com/Jaswit/gtcp/header"
 	"log"
 )
 

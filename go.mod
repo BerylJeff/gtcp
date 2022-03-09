@@ -1,1 +1,1 @@
-module "gtcp"
+module "github.com/Jaswit/gtcp"

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"gtcp/client"
-	"gtcp/header"
-	_ "gtcp/logger"
-	"gtcp/server"
 	"fmt"
+	"github.com/Jaswit/gtcp/client"
+	"github.com/Jaswit/gtcp/header"
+	_ "github.com/Jaswit/gtcp/logger"
+	"github.com/Jaswit/gtcp/server"
 	"log"
 )
 

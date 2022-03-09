@@ -1,7 +1,7 @@
 package client
 
 import (
-	"commonTcpServer/header"
+	"github.com/Jaswit/gtcp/header"
 	"fmt"
 	"log"
 	"testing"
