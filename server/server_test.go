@@ -14,7 +14,7 @@ func (s *S5Server) OnReceive(cid uint64, header header.IHeader, body []byte) err
 	return nil
 }
 
-func (s *S5Server) SendMsg(cid uint64, MsgID uint16, data []byte) (int, error) {
+func (s *S5Server) SendMsg(cid uint64, MsgID int32, data []byte) (int, error) {
 	head := &header.HeadInfo{
 		MsgLen: int32(len(data)),
 		MsgID:  MsgID,

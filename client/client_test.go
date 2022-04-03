@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/Jaswit/gtcp/header"
 	"fmt"
+	"github.com/Jaswit/gtcp/header"
 	"log"
 	"testing"
 )
@@ -18,7 +18,7 @@ func (c *S5Client) OnReceive(header header.IHeader, body []byte) error {
 	return fmt.Errorf("err")
 }
 
-func (c *S5Client) SendMsg(MsgID uint16, data []byte) (int, error) {
+func (c *S5Client) SendMsg(MsgID int32, data []byte) (int, error) {
 	head := &header.HeadInfo{
 		MsgLen: int32(len(data)),
 		MsgID:  MsgID,
@@ -47,7 +47,7 @@ func TestClient(t *testing.T) {
 	}
 
 	for i := 0; i < 5; i++ {
-		_, err := cli.SendMsg(uint16(i), []byte(fmt.Sprintf("helloword_:%d", i)))
+		_, err := cli.SendMsg(int32(i), []byte(fmt.Sprintf("helloword_:%d", i)))
 		if err != nil {
 			log.Println(err)
 			return

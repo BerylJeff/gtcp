@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/Jaswit/gtcp/client"
 	"github.com/Jaswit/gtcp/header"
 	_ "github.com/Jaswit/gtcp/logger"
@@ -56,11 +55,11 @@ type S5Server struct {
 
 func (s *S5Server) OnReceive(cid uint64, header header.IHeader, body []byte) error {
 	log.Printf("S5Server OnReceive cid:%d msgId:%d msglen:%d msg:%s", cid, header.GetMsgID(), header.GetMsgLen(), string(body))
-	s.SendMsg(cid, header.GetMsgID() + 100, body)
+	s.SendMsg(cid, header.GetMsgID()+100, body)
 	return nil
 }
 
-func (s *S5Server) SendMsg(cid uint64, MsgID uint16, data []byte) (int, error) {
+func (s *S5Server) SendMsg(cid uint64, MsgID int32, data []byte) (int, error) {
 	head := &header.HeadInfo{
 		MsgLen: int32(len(data)),
 		MsgID:  MsgID,
@@ -81,11 +80,13 @@ func (s *S5Server) SendMsg(cid uint64, MsgID uint16, data []byte) (int, error) {
 
 func main() {
 
-	go func() {
-		msgHandle := &S5Server{}
-		s := server.NewServer(msgHandle)
-		s.Start("tcp", "127.0.0.1:9995")
-	}()
+	//go func() {
+	//	msgHandle := &S5Server{}
+	//	s := server.NewServer(msgHandle)
+	//	s.Start("tcp", "127.0.0.1:9995")
+	//}()
+	//
+	//go login.LoginStart()
 
 	cli := client.NewClient(&S5Client{})
 	err := cli.Open("tcp", "127.0.0.1:9995")
@@ -94,23 +95,24 @@ func main() {
 		return
 	}
 
-	for i := 1; i < 5; i++ {
-		data := []byte(fmt.Sprintf("client_:%d", i))
-		head := &header.HeadInfo{
-			MsgLen: int32(len(data)),
-			MsgID:  uint16(i + 100),
-		}
-		buff, err := head.Pack()
-		if err != nil {
-			log.Println(err)
-			continue
-		}
-		buff = append(buff, data...)
-		_, err = cli.Send(buff)
-		if err != nil {
-			log.Println(err)
-			return
-		}
+	data := []byte("ready")
+	head := &header.HeadInfo{
+		MsgLen: int32(len(data)),
+		MsgID:  10010,
 	}
-	select {}
+	buff, err := head.Pack()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	buff = append(buff, data...)
+	_, err = cli.Send(buff)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	select {
+
+	}
 }
