@@ -1,18 +1,24 @@
 package logger
 
 import (
-	"io"
 	"log"
 	"os"
 )
 
 func init(){
-	f, err := os.OpenFile("./log/log.txt", os.O_WRONLY|os.O_CREATE, 0755)
+	path := "./log/"
+	err := os.MkdirAll(path, os.ModePerm)
 	if err != nil {
 		log.Fatalf("create file log.txt failed: %v", err)
 		return
 	}
-	log.SetOutput(io.MultiWriter(os.Stdout, f))
+	f, err := os.OpenFile(path + "log.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+	if err != nil {
+		log.Fatalf("create file log.txt failed: %v", err)
+		return
+	}
+	//log.SetOutput(io.MultiWriter(os.Stdout, f))
+	log.SetOutput(f)
 	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Lshortfile)
 }
 
